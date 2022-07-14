@@ -1,0 +1,20 @@
+@api = http://localhost:3000
+
+GET {{api}}/health
+
+### 
+# @name getToken
+GET {{api}}/signup HTTP/1.1
+content-type: application/json
+
+@authToken = {{getToken.response.body.$.token}}
+
+### Products ALL
+GET {{api}}/product HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{authToken}}
+
+### Products by Id
+
+GET {{api}}/product/1
+
